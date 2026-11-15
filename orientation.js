@@ -1,0 +1,1 @@
+document.getElementById('wide').onclick=async()=>{try{if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();if(screen.orientation?.lock)await screen.orientation.lock('landscape')}catch{}if(matchMedia('(orientation:portrait)').matches)document.querySelector('.phone-heading small').textContent='请关闭手机方向锁定，再将手机横过来'}

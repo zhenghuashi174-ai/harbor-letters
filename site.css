@@ -1,0 +1,135 @@
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#101324;color:#f0e8db;font-family:"Microsoft YaHei",sans-serif}body{min-height:100dvh;display:grid;place-items:center}main{position:relative;width:min(100vw,177.77778dvh);aspect-ratio:16/9;isolation:isolate;container-type:inline-size;--accent:#f5c9ce}canvas{width:100%;height:100%;display:block}button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}button:disabled{cursor:wait}nav{position:absolute;top:5%;right:4.3%;display:flex;gap:clamp(3px,.5cqw,10px)}nav button{width:clamp(40px,4.8cqw,85px);height:clamp(40px,5.05cqw,86px);background:#1a1b2aaf;border:1px solid #e4daae45;border-radius:2px;color:#e7dfd4;display:grid;align-content:center;gap:.22em;font-family:Georgia,"SimSun",serif;font-size:clamp(18px,1.8cqw,32px);transition:background .15s,color .15s;border-top-color:#e4daae85}nav small{font:500 clamp(6px,.57cqw,11px) Georgia,serif;letter-spacing:.09em}nav button:hover,nav button[aria-pressed=true]{color:#201f2e;background:var(--accent);border-color:var(--accent)}button:focus-visible{outline:2px solid #fff4c6;outline-offset:3px}footer{position:absolute;left:5%;right:5%;bottom:5.3%;display:flex;align-items:flex-end;justify-content:space-between;gap:8px}.chapter{display:flex;gap:12px;align-items:center}.chapter i{color:var(--accent);font:normal clamp(22px,3cqw,48px) Georgia}.chapter strong{font:normal clamp(16px,2.1cqw,34px) Georgia,"SimSun",serif;letter-spacing:.14em}.chapter p{margin:.6em 0 0;color:#cec8bf;font-size:clamp(10px,.9cqw,16px);letter-spacing:.13em}#controls{display:flex;gap:4px}#controls button{background:#181929ac;border:1px solid #c7beaa55;padding:.45em .8em;font-size:clamp(10px,.92cqw,16px);border-radius:2px}#controls button:hover{border-color:#e4d6b6}[hidden]{display:none!important}#spots{position:absolute;inset:0;pointer-events:none}#spots button{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;background:transparent;border:0;border-radius:50%}#spots button span{position:absolute;bottom:90%;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:clamp(10px,1cqw,16px);border:1px solid #efdcba77;background:#252333e8;color:#ffefd5;padding:4px 8px;opacity:0;pointer-events:none}#spots button:hover span,#spots button:focus-visible span{opacity:1}#spots button[data-place=tree]{left:32.4%;top:27%;width:9%;height:18%}#spots button[data-place=pond]{left:60.8%;top:44.6%;width:12%;height:8%}#spots button[data-place=lamp]{left:71%;top:46.5%;width:4.5%;height:13%}#spots button[data-place=person]{width:5%;height:12%}@media(max-width:600px){nav{top:2%;right:2%}footer{bottom:2%;left:2%;right:2%}.chapter{gap:5px}.chapter p{letter-spacing:0;margin:.2em 0 0}#controls{gap:2px}#controls button{padding:4px}.chapter i{display:none}}
+
+
+
+#dialogue{position:absolute;z-index:3;bottom:13%;left:50%;transform:translateX(-50%);width:min(56%,760px);padding:10px 18px 12px;background:linear-gradient(112deg,#222337fa,#303047fa);border:1px solid #c6a477;border-left:4px solid var(--accent);border-radius:4px;box-shadow:0 5px 22px #13121f60;color:#fff1d9}#dialogue header{display:flex;align-items:center;justify-content:space-between;color:var(--accent);letter-spacing:.13em;font-size:clamp(11px,.9cqw,16px)}#dialogue button,#notebook button{border:1px solid #bca58888;border-radius:3px;background:#3d394b;color:#fff1d9;padding:.38em .8em;font-size:clamp(12px,.98cqw,17px)}#dialogue #dismiss{font-size:18px;padding:0 6px;line-height:1.1;background:transparent;border:0}.verse{margin:5px 0;line-height:1.6;font-size:clamp(13px,1.18cqw,20px)}.verse b{color:var(--accent);margin-right:.8em}#answers{display:flex;gap:7px;justify-content:flex-end}#answers button:hover,#controls button[data-talk]:hover{background:#665463}#controls button[data-talk]{border-color:var(--accent)}#notebook{background:#2a2739;color:#f5e4cd;border:1px solid #cfad7a;border-radius:5px;padding:20px 27px;max-width:90vw}#notebook::backdrop{background:#151525a0}#notebook h2{font-size:20px;margin:0 0 12px}#notebook ol{padding-left:24px;line-height:1.95}.quest-target{outline:2px dashed #fff29e!important;box-shadow:0 0 12px #ffd470;animation:guide 1.3s ease-in-out infinite alternate}@keyframes guide{to{box-shadow:0 0 20px #ffdc5e99;outline-color:#ffc163}}
+
+@media(max-width:700px){footer{align-items:center}#controls{display:grid;grid-template-columns:repeat(3,1fr)}#dialogue{width:min(90vw,490px);padding:7px 11px;bottom:18%}.chapter p{max-width:44vw}#answers button{font-size:12px}}
+
+@media(max-width:700px) and (orientation:portrait){main{margin-bottom:125px}#dialogue{top:calc(100% + 54px);bottom:auto;width:96%}footer{top:100%;bottom:auto}nav button{min-height:36px}}
+
+
+
+#jukebox{position:absolute;left:4.4%;top:5%;z-index:4;display:flex;gap:3px;font-size:clamp(11px,.94cqw,16px)}#jukebox button,#jukebox summary{background:#222338b9;color:#fff0d9;border:1px solid #c3b39a66;border-radius:3px;padding:5px 9px;cursor:pointer;list-style:none}#jukebox summary::marker{content:''}#jukebox summary{font-size:1.05em}.music-menu{display:grid;position:absolute;top:calc(100% + 5px);left:0;gap:10px;width:min(250px,72vw);background:#242638fa;padding:12px;border:1px solid #ccbd9f88;border-radius:4px;box-shadow:0 4px 18px #16152366}.music-menu small{overflow-wrap:anywhere;color:#e6d5b4}.music-menu label{display:grid;gap:4px}.music-menu input{font:inherit;max-width:100%;accent-color:#edb593}details:not([open]) .music-menu{display:none}
+
+
+
+#film-caption{position:absolute;bottom:15%;left:50%;transform:translateX(-50%);max-width:82%;width:max-content;text-align:center;pointer-events:none;background:linear-gradient(90deg,transparent,#141725d9 12%,#141725d9 88%,transparent);padding:.55em 2.2em;color:#fff3dc;font:500 clamp(14px,1.46cqw,27px)/1.55 "Microsoft YaHei",sans-serif;text-shadow:0 1px 3px #292035}#film-caption b{color:var(--accent);font-size:.78em;letter-spacing:.12em;margin-right:.8em}#film-caption b:empty{display:none}.watching #controls [data-talk],.watching #controls #journal,.watching #spots button:not([data-place=person]){display:none}.watching #mode{border-color:var(--accent)}
+
+@media(max-width:700px) and (orientation:portrait){#film-caption{top:calc(100% + 63px);bottom:auto;width:96%;max-width:96%;padding:8px 12px}}
+
+
+
+/* Only the season selector and a small disclosure remain on the stage. */
+
+main{margin-bottom:0}#island-menu{position:absolute;z-index:8;left:3%;top:4%;font-size:clamp(12px,.95cqw,16px)}
+
+#island-menu>summary{width:38px;height:38px;display:grid;align-content:center;justify-content:center;gap:3px;cursor:pointer;list-style:none;border:1px solid #f2dcbb55;background:#1a2031a8;border-radius:50%;color:#e7d9be}
+
+#island-menu summary::-webkit-details-marker{display:none}#island-menu>summary i{display:block;width:14px;height:1px;background:currentColor}
+
+#island-menu:not([open])>.menu-panel{display:none}.menu-panel{position:absolute;top:calc(100% + 7px);left:0;padding:14px;width:min(270px,85vw);max-height:min(70dvh,425px);overflow:auto;background:#202232f7;border:1px solid #9b9279;border-radius:7px;box-shadow:0 10px 30px #11172570}.menu-scene{display:grid;gap:4px;margin-bottom:11px}.menu-scene strong{font:normal 16px Georgia,"SimSun",serif;color:#ffe9cc}.menu-scene small{color:#c8bcae}
+
+#controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}#controls button,#jukebox button,#jukebox summary{font-size:13px;padding:7px 9px}
+
+#jukebox{position:static;margin-top:13px;padding-top:12px;border-top:1px solid #aea28a44;display:grid;align-items:start;gap:8px;font-size:13px}#jukebox .music-menu{position:static;width:auto;padding:9px 1px 0;border:0;box-shadow:none;background:transparent}#jukebox summary{list-style:none;text-align:center;cursor:pointer}
+
+#film-caption,#dialogue{position:absolute;z-index:3;bottom:auto;right:auto;transform:translateY(-100%);width:max-content;max-width:min(33cqw,380px);margin:0;padding:.6em .9em;color:#3b3440;background:#fff4de;border:1.5px solid #715e61;border-radius:12px 12px 10px 10px;box-shadow:1px 3px 0 #3b293942;text-align:left;text-shadow:none;letter-spacing:0;font:500 clamp(12px,1.13cqw,19px)/1.46 "Microsoft YaHei",sans-serif}
+
+.cloud:after{content:'';position:absolute;left:var(--tip,50%);bottom:-6px;width:9px;height:9px;transform:translateX(-50%) rotate(45deg);background:#fff4de;border-bottom:1.5px solid #715e61;border-right:1.5px solid #715e61}
+
+#film-caption b,#speaker{display:block;color:#955c53;font-size:.74em;font-weight:600;letter-spacing:.05em}#dialogue{max-width:min(38cqw,420px)}#dialogue header{float:right;height:1em}#dialogue #episode{display:none}#dialogue #dismiss{color:#806961}#dialogue .verse{font:inherit;margin:0}#answers{flex-wrap:wrap;justify-content:flex-start;gap:5px}#answers:not(:empty){margin-top:6px}#answers button{background:#fae5be;border:1px solid #bea17f;color:#4f4140;font-size:.85em;padding:3px 7px}#answers button:hover{background:#f0cd94}
+
+@media(max-width:650px){#island-menu{top:2%;left:2%}#island-menu>summary{width:32px;height:32px}#film-caption{max-width:48cqw;font-size:11px;padding:4px 7px}#dialogue{max-width:63cqw;font-size:12px;padding:5px 8px}nav button{width:34px;height:34px;min-height:34px}nav small{display:none}}
+
+
+
+#dialogue .verse{min-width:4em}#dialogue.can-advance .verse{cursor:pointer;padding-right:.8em}#dialogue.can-advance .verse:after{content:'▸';color:#ad7860;font-size:.8em;margin-left:.38em}#dialogue #dismiss{font-size:14px;padding:0 1px 2px 6px}.cloud #line{overflow-wrap:anywhere}
+
+#dialogue.await-place{pointer-events:none}#dialogue.await-place #dismiss{pointer-events:auto}
+
+
+
+/* Compact lettering keeps the heads and the island visible. */
+
+#film-caption,#dialogue{max-width:min(21cqw,240px);font-size:clamp(11px,.94cqw,15px);line-height:1.38;padding:.38em .65em;border-radius:9px}
+
+#film-caption b,#speaker{display:inline;font-size:.76em;margin-right:.46em}
+
+#dialogue .verse{font:inherit;margin:0}#answers:not(:empty){margin-top:3px}#answers button{padding:2px 5px}
+
+@media(max-width:650px){#film-caption,#dialogue{max-width:min(45cqw,190px);font-size:11px;padding:4px 6px}}
+
+#spots .quest-target{z-index:2}
+
+
+
+.cloud .memory-art{display:block;width:clamp(55px,5.8cqw,78px);height:auto;aspect-ratio:78/42;margin:3px auto 1px;border-radius:4px;image-rendering:pixelated}
+
+.cloud.thinking:after{width:5px;height:5px;border:1px solid #88727a;border-radius:50%;box-shadow:4px 5px 0 -1px #f5dfc7}
+
+.cloud.thinking b{color:#735b82}
+
+
+
+
+
+/* Small paper speech slips: the tail, not a name label, identifies the speaker. */
+
+#film-caption,#dialogue{background:#fffdf4f5;border:1px solid #514955;text-align:center;pointer-events:none;border-radius:10px;box-shadow:1px 1px 0 #302a4340;font:500 clamp(10px,.9cqw,14px)/1.24 "PingFang SC","Microsoft YaHei",sans-serif;max-width:min(22cqw,22em);padding:3px 8px;line-break:strict;text-wrap:pretty}
+
+#film-caption b,#dialogue #speaker{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);margin:0}
+
+.cloud:after{bottom:-4px;width:5px;height:5px;background:#fffdf4;border-width:0 1px 1px 0}
+
+.cloud .memory-art{display:inline-block;vertical-align:middle;width:clamp(34px,3.4cqw,50px);height:auto;margin:0 0 0 3px;border:0;border-radius:40%;mask-image:radial-gradient(ellipse at center,#000 40%,#000e 54%,#0008 69%,transparent 86%);-webkit-mask-image:radial-gradient(ellipse at center,#000 40%,#000e 54%,#0008 69%,transparent 86%)}
+
+#dialogue #dismiss{font-size:11px;padding:0 0 0 4px;color:#8a7771}
+
+#dialogue.can-advance .verse{padding-right:.35em}
+
+@media(max-width:650px){#film-caption,#dialogue{font-size:10px;max-width:45cqw;padding:2px 4px}}
+
+
+
+
+
+#track-choice{max-width:100%;background:#2b2a3c;color:#fff0d3;border:1px solid #8a795f;border-radius:3px;padding:4px;font:inherit}
+
+
+html,body{background:#101929}
+.phone-heading,.phone-footer{display:none}
+@media(orientation:portrait){
+ body{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:max(18px,env(safe-area-inset-top)) 0 max(22px,env(safe-area-inset-bottom));min-height:100vh;min-height:100svh;background:radial-gradient(ellipse at 50% 46%,#213444 0%,#111d30 50%,#0f1627 100%)}
+ main{width:100%;margin:0}
+ .phone-heading,.phone-footer{display:block;width:min(100%,610px);padding:0 22px}
+ .phone-heading{margin-bottom:70px}.phone-heading h1{font:normal clamp(25px,6.7vw,39px)/1.25 Georgia,"Songti SC","SimSun",serif;color:#ffe9c6;margin:.28em 0 0;letter-spacing:.045em}
+ .phone-heading small{color:#d4b48e;font:13px/1.5 Georgia,"Songti SC",serif;letter-spacing:.17em}
+ main nav{top:-53px;right:14px;gap:5px}main nav button{width:44px;height:44px;border-radius:8px;font-size:19px}
+ #island-menu{top:-53px;left:14px}#island-menu>summary{width:44px;height:44px}
+ .phone-footer{margin-top:20px}.phone-footer p{margin:0 0 8px;color:#aebbd0;font-size:13px;letter-spacing:.12em}
+ #scene-title{font:normal clamp(20px,5.2vw,30px)/1.5 Georgia,"Songti SC",serif;color:#f7edda;min-height:1.55em}
+ .phone-actions{display:flex;gap:8px;margin-top:17px}
+ .phone-actions button{background:#222f44;color:#f9e7cc;border:1px solid #637080;border-radius:24px;padding:0 17px;min-height:44px;font-size:15px}
+ #film-caption,#dialogue{font-size:clamp(13px,3.65vw,17px);line-height:1.35;max-width:min(64cqw,290px);padding:4px 8px;background:#fff9ec}
+ .menu-panel{max-height:min(64dvh,460px)}
+}
+@media(orientation:landscape) and (max-height:600px){
+ nav{top:max(4px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right))}nav button,#island-menu>summary{min-width:44px;min-height:44px}#island-menu{left:max(8px,env(safe-area-inset-left));top:5px}
+ #film-caption,#dialogue{font-size:clamp(13px,1.9cqw,17px);max-width:38cqw;line-height:1.33}
+ .menu-panel{max-height:calc(100dvh - 66px)}
+}
+@media(orientation:landscape){
+body{min-height:100vh;min-height:100dvh;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+main{width:min(100%,calc((100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * 16 / 9));max-width:100%;max-height:100dvh}
+}main.watching{touch-action:manipulation}.watching #spots button{pointer-events:none}
+@media(orientation:landscape){main{width: min(100vw,177.77778vh);width:min(100vw,177.77778dvh)}}
+#load-state{position:fixed;z-index:11;left:50%;top:45%;transform:translate(-50%,-50%);background:#142334;color:#fff0da;border-radius:12px;padding:12px 18px;text-align:center;font-size:15px}
+#load-state button{margin:.6em auto 0;background:#29384b;color:#fff1dc;border:1px solid #918978;border-radius:6px;padding:6px 12px}
+
+#story-speed{position:absolute;z-index:2;top:calc(5% + clamp(40px,5.05cqw,86px) + 5px);right:4.3%;display:flex;gap:2px;background:#182433da;border-radius:20px;padding:2px}
+#stage:not(.watching) #story-speed{display:none}
+#story-speed button{border:0;background:transparent;color:#e3ded3;border-radius:14px;min-width:36px;min-height:27px;font:600 13px/1 system-ui}
+#story-speed button[aria-pressed=true]{background:var(--accent);color:#252431}
+@media (orientation:landscape) and (max-height:600px){#story-speed{right:max(8px,env(safe-area-inset-right));top:max(52px,calc(env(safe-area-inset-top) + 49px))}#story-speed button{min-width:43px;min-height:30px}}
+@media (orientation:portrait){#story-speed{top:auto;bottom:-40px;right:14px} .phone-footer{margin-top:55px}}

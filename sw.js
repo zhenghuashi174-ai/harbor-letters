@@ -1,0 +1,10 @@
+const key='harbor-story-rates-1f37438bef04',base=self.registration.scope,preload=["assets/harbor.m4a", "assets/painted/front0.png", "assets/painted/front1.png", "assets/painted/front2.png", "assets/painted/front3.png", "assets/painted/ground0.png", "assets/painted/ground1.png", "assets/painted/ground2.png", "assets/painted/ground3.png", "assets/painted/houses0.png", "assets/painted/houses1.png", "assets/painted/houses2.png", "assets/painted/houses3.png", "assets/painted/sky0.webp", "assets/painted/sky1.webp", "assets/painted/sky2.webp", "assets/painted/sky3.webp", "assets/painted/trees0.png", "assets/painted/trees1.png", "assets/painted/trees2.png", "assets/painted/trees3.png", "assets/song.m4a", "controls.js", "index.html", "music.js", "offline.js", "orientation.js", "site.css", "story.js"];
+self.addEventListener('install',e=>e.waitUntil(caches.open(key).then(c=>c.addAll(preload)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const k of await caches.keys())if(k.startsWith('harbor-story-')&&k!==key)await caches.delete(k);await self.clients.claim()})()));
+self.addEventListener('fetch',e=>{const req=e.request;if(req.method!=='GET'||!req.url.startsWith(base))return;
+e.respondWith((async()=>{const c=await caches.open(key);const hit=await c.match(req.mode==='navigate'?new URL('index.html',base):req,{ignoreSearch:true});if(!hit)return fetch(req);
+const range=req.headers.get('range');if(!range||!req.url.split('?')[0].endsWith('.m4a'))return hit;
+const b=await hit.blob(),m=/^bytes=(\d*)-(\d*)$/.exec(range);if(!m)return fetch(req);
+const start=m[1]?+m[1]:Math.max(0,b.size-Number(m[2])),end=m[1]&&m[2]?Math.min(+m[2],b.size-1):b.size-1;
+if(start>end||start>=b.size)return new Response(null,{status:416,headers:{'Content-Range':'bytes */'+b.size}});
+return new Response(b.slice(start,end+1),{status:206,headers:{'Content-Type':'audio/mp4','Content-Length':String(end-start+1),'Content-Range':'bytes '+start+'-'+end+'/'+b.size,'Accept-Ranges':'bytes'}})})())});
