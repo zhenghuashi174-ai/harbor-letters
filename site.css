@@ -97,32 +97,7 @@ main{margin-bottom:0}#island-menu{position:absolute;z-index:8;left:3%;top:4%;fon
 #track-choice{max-width:100%;background:#2b2a3c;color:#fff0d3;border:1px solid #8a795f;border-radius:3px;padding:4px;font:inherit}
 
 
-html,body{background:#101929}
-.phone-heading,.phone-footer{display:none}
-@media(orientation:portrait){
- body{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:max(18px,env(safe-area-inset-top)) 0 max(22px,env(safe-area-inset-bottom));min-height:100vh;min-height:100svh;background:radial-gradient(ellipse at 50% 46%,#213444 0%,#111d30 50%,#0f1627 100%)}
- main{width:100%;margin:0}
- .phone-heading,.phone-footer{display:block;width:min(100%,610px);padding:0 22px}
- .phone-heading{margin-bottom:70px}.phone-heading h1{font:normal clamp(25px,6.7vw,39px)/1.25 Georgia,"Songti SC","SimSun",serif;color:#ffe9c6;margin:.28em 0 0;letter-spacing:.045em}
- .phone-heading small{color:#d4b48e;font:13px/1.5 Georgia,"Songti SC",serif;letter-spacing:.17em}
- main nav{top:-53px;right:14px;gap:5px}main nav button{width:44px;height:44px;border-radius:8px;font-size:19px}
- #island-menu{top:-53px;left:14px}#island-menu>summary{width:44px;height:44px}
- .phone-footer{margin-top:20px}.phone-footer p{margin:0 0 8px;color:#aebbd0;font-size:13px;letter-spacing:.12em}
- #scene-title{font:normal clamp(20px,5.2vw,30px)/1.5 Georgia,"Songti SC",serif;color:#f7edda;min-height:1.55em}
- .phone-actions{display:flex;gap:8px;margin-top:17px}
- .phone-actions button{background:#222f44;color:#f9e7cc;border:1px solid #637080;border-radius:24px;padding:0 17px;min-height:44px;font-size:15px}
- #film-caption,#dialogue{font-size:clamp(13px,3.65vw,17px);line-height:1.35;max-width:min(64cqw,290px);padding:4px 8px;background:#fff9ec}
- .menu-panel{max-height:min(64dvh,460px)}
-}
-@media(orientation:landscape) and (max-height:600px){
- nav{top:max(4px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right))}nav button,#island-menu>summary{min-width:44px;min-height:44px}#island-menu{left:max(8px,env(safe-area-inset-left));top:5px}
- #film-caption,#dialogue{font-size:clamp(13px,1.9cqw,17px);max-width:38cqw;line-height:1.33}
- .menu-panel{max-height:calc(100dvh - 66px)}
-}
-@media(orientation:landscape){
-body{min-height:100vh;min-height:100dvh;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
-main{width:min(100%,calc((100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * 16 / 9));max-width:100%;max-height:100dvh}
-}main.watching{touch-action:manipulation}.watching #spots button{pointer-events:none}
+main.watching{touch-action:manipulation}.watching #spots button{pointer-events:none}
 @media(orientation:landscape){main{width: min(100vw,177.77778vh);width:min(100vw,177.77778dvh)}}
 #load-state{position:fixed;z-index:11;left:50%;top:45%;transform:translate(-50%,-50%);background:#142334;color:#fff0da;border-radius:12px;padding:12px 18px;text-align:center;font-size:15px}
 #load-state button{margin:.6em auto 0;background:#29384b;color:#fff1dc;border:1px solid #918978;border-radius:6px;padding:6px 12px}
@@ -131,5 +106,22 @@ main{width:min(100%,calc((100dvh - env(safe-area-inset-top) - env(safe-area-inse
 #stage:not(.watching) #story-speed{display:none}
 #story-speed button{border:0;background:transparent;color:#e3ded3;border-radius:14px;min-width:36px;min-height:27px;font:600 13px/1 system-ui}
 #story-speed button[aria-pressed=true]{background:var(--accent);color:#252431}
-@media (orientation:landscape) and (max-height:600px){#story-speed{right:max(8px,env(safe-area-inset-right));top:max(52px,calc(env(safe-area-inset-top) + 49px))}#story-speed button{min-width:43px;min-height:30px}}
-@media (orientation:portrait){#story-speed{top:auto;bottom:-40px;right:14px} .phone-footer{margin-top:55px}}
+
+/* The landscape stage has the same local coordinates in a locked WebView. */
+html,body{width:100%;height:100%;min-height:0;margin:0;overflow:hidden;background:#10192a;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+#viewport{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at center,#23304a,#10192a 82%)}
+#safe-area{position:absolute;inset:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+#stage{position:absolute;left:50%;top:50%;margin:0;width:var(--scene-width,100vw);height:var(--scene-height,56.25vw);max-width:none;max-height:none;transform:translate(-50%,-50%) rotate(var(--turn,0deg));transform-origin:center}
+#stage nav{top:8px;right:9px;gap:3px}
+#stage nav button{width:34px;height:32px;min-height:32px;font-size:15px;border-radius:4px}
+#stage nav small{display:none}
+#island-menu{left:9px;top:8px}
+#island-menu>summary{width:32px;height:32px}
+#wide{position:absolute;z-index:4;left:48px;top:8px;height:32px;padding:0 10px;border-radius:16px;background:#182337bf;border:1px solid #cebaa455;color:#f1e4ce;font-size:12px}
+#stage #story-speed{right:9px;top:44px;bottom:auto;padding:1px}
+#stage #story-speed button{min-width:32px;min-height:24px;font-size:11px}
+#screen-notice{position:absolute;top:48px;left:9px;background:#17212eee;border-radius:5px;color:#f5eada;font-size:11px;padding:5px 8px;z-index:5}
+#stage #film-caption,#stage #dialogue{width:max-content;max-width:24%;font-size:11px;font-size:clamp(10px,1.42cqw,12px);line-height:1.27;padding:2px 6px;border-radius:7px}
+#stage .memory-art{width:32px}
+#stage .menu-panel{width:230px;max-width:none;max-height:calc(var(--scene-height) - 53px);overscroll-behavior:contain}
+#stage #controls button,#stage #jukebox button,#stage #jukebox summary{font-size:12px}

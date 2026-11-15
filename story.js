@@ -2260,9 +2260,9 @@
   girlHit.dataset.actor = "girl";
   spots.append(girlHit);
   function layout() {
-    const rect = canvas.getBoundingClientRect(), dpr = Math.min(3, devicePixelRatio || 1);
-    canvas.width = Math.round(rect.width * dpr);
-    canvas.height = Math.round(rect.height * dpr);
+    const dpr = Math.min(3, devicePixelRatio || 1);
+    canvas.width = Math.round(canvas.clientWidth * dpr);
+    canvas.height = Math.round(canvas.clientHeight * dpr);
     render();
   }
   var menu = document.querySelector("#island-menu");
@@ -2426,7 +2426,7 @@
   }
   // In watching mode a tap on either character means the same as a tap on scenery.
   stage.addEventListener('click', event => {
-    if (!film || !ready || event.target.closest('nav,details,dialog,#controls,#story-speed')) return;
+    if (!film || !ready || event.target.closest('nav,details,dialog,#controls,#story-speed,#wide')) return;
     event.stopPropagation();
     nextDialogue();
   }, true);
